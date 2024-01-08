@@ -20,7 +20,7 @@ export default function WeatherForecast({coords,mode}){
         <>  
             <HorizontalLine />
             <div className="w-[100%] h-[55%] rounded-lg mt-[25px] max-md:ml-3">
-                {forecastData.length!==0 && <h2 className="text-md pl-4 max-md:text-center">Weather Forecast</h2>}
+                {forecastData.length!==0 && <h2 className="text-md pl-4 text-stone-800 max-md:text-center">Weather Forecast</h2>}
                 <div className="grid grid-cols-5 mt-10 max-md:grid-cols-1">
                     {forecastData.length!==0 && forecastData.map((item,index)=>(
                         <div className="bg-stone-200 bg-opacity-45 mx-auto w-[80%] rounded-lg flex flex-col justify-center items-center max-md:mt-4" key={index}>
