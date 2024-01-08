@@ -70,7 +70,7 @@ export default function Main(){
 
   return (
     <>
-        <div className="h-[90vh] w-[95vw] bg-teal-600 bg-opacity-95 flex flex-col rounded-lg max-md:mt-10">
+        <div className="h-[90vh] w-[95vw] bg-teal-600 bg-opacity-95 flex flex-col rounded-lg max-md:mt-16">
           {/* Input Div */}
           <div className="flex justify-evenly pt-[20px] max-md:fixed max-md:w-full">
             {coordinates.lat!==null && <div>
@@ -91,7 +91,6 @@ export default function Main(){
           </div>}
           {coordinates.lat===null && <Loader />}
         </div>
-
         <footer className="text-sky-500 mt-2 text-md">
           Developed by <span className="text-stone-950 font-bold">Anurag Guleria</span>
         </footer>
