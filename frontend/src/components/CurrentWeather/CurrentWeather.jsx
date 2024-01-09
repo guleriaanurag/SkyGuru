@@ -23,14 +23,15 @@ export default function CurrentWeather({coords,mode}){
     },[coords,mode])
 
     return(
-        <div className="currentdata-wrapper h-[95%] w-[90%] mt-[30px] rounded-lg flex flex-col items-center max-md:w-[95%] max-md:mt-[80px]">
+        <>
+        {weatherData.weather &&<div className="currentdata-wrapper h-[95%] w-[90%] mt-[30px] rounded-lg flex flex-col items-center max-md:w-[95%] max-md:mt-[80px]">
             {/* Basic Info */}
             <div className='flex flex-row justify-between w-full px-4 pt-2 max-md:flex-col'>
                 <p className='text-md text-stone-900 max-md:text-center'>Current Weather</p>
                 <DateTime />
             </div>
             {/* Rest of the data */}
-            {weatherData.weather && <div className='w-full'>
+            <div className='w-full'>
                 <div className='flex w-full justify-evenly mt-[40px]'>
                     <div className='mt-4'>
                         <p className='capitalize text-lg'> <FontAwesomeIcon icon={faLocationDot} className='text-xl'/> <span>{weatherData.name}, {weatherData.sys.country}</span></p>
@@ -41,10 +42,8 @@ export default function CurrentWeather({coords,mode}){
                 </div>
                 <WindDetails windInfo={weatherData.wind} mode={mode}/>
                 <SunDetails sunData={weatherData.sys}/>
-            </div> }
-            <div>
-                
-            </div>
-        </div>
+            </div> 
+        </div>}
+        </>
     );
 }
