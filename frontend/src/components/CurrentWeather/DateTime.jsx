@@ -5,11 +5,11 @@ export default function DateTime() {
     const[time,setTime] = useState(new Date().toLocaleTimeString());
 
     const date = new Date();
-    const formattedDate = date.toLocaleDateString('en-US',{
-        month: 'short',
-        year: '2-digit'
-    })
-    const dayOfTheWeek = new Intl.DateTimeFormat('en-US',{weekday:'long'}).format(date);
+    const weekday = date.toLocaleDateString('en-US',{weekday:'short'});
+    const  day = date.toLocaleDateString('en-US',{day:'numeric'})
+    const month = date.toLocaleDateString('en-US',{month:'short'})
+
+    const formattedDate = `${weekday}, ${day} ${month}`;
 
     useEffect(()=>{
         const intervalId = setInterval(()=>{
@@ -20,8 +20,8 @@ export default function DateTime() {
     },[])
 
     return (
-        <div className="max-md:text-center">
-            <span className="text-md text-sky-100">{dayOfTheWeek}, {formattedDate} | {time}</span>
+        <div className="w-52 max-md:w-full max-md:text-center">
+            <span className="text-md text-sky-100"> {formattedDate} | {time} </span>
         </div>
   )
 }
