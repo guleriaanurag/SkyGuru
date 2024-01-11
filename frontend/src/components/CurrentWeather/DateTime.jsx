@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 
 export default function DateTime() {
     
-    const[time,setTime] = useState(new Date().toLocaleTimeString());
+    const[time,setTime] = useState(new Date().toLocaleTimeString('en-US',{
+        hour: 'numeric',
+        minute: 'numeric'
+    }));
 
     const date = new Date();
     const weekday = date.toLocaleDateString('en-US',{weekday:'short'});
@@ -13,7 +16,10 @@ export default function DateTime() {
 
     useEffect(()=>{
         const intervalId = setInterval(()=>{
-            setTime(new Date().toLocaleTimeString());
+            setTime(new Date().toLocaleTimeString('en-US',{
+                hour: 'numeric',
+                minute: 'numeric'
+            }));
         },1000)
 
         return ()=> clearInterval(intervalId);
