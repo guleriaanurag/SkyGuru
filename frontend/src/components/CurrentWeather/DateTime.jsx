@@ -29,5 +29,5 @@ export default function DateTime() {
         <div className="w-52 max-md:w-full max-md:text-center">
             <span className="text-md text-sky-100"> {formattedDate} | {time} </span>
         </div>
-  )
+    )
 }
