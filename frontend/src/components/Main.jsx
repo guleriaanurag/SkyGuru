@@ -7,15 +7,19 @@ import AirPollution from "./AirPollution/AirPollution";
 import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import WeatherForecast from "./WeatherForecast";
 import Loader from "./Loader";
+import CheckConnection from "./CheckConnection";
 
 export default function Main(){
+  // state for handling the location coordinates
   const[coordinates,setCoordinates] = useState({
     lat: null,
     lon: null,
   })
+  // state for managing the mode in which the data is fetched
   const[mode,setMode] = useState('metric');
   const city = useRef();
   
+  // the code below is used to calculate the class for the mode switch buttons
   let cClass = "cursor-pointer";
   let fClass = "cursor-pointer";
 
@@ -28,18 +32,23 @@ export default function Main(){
     fClass+=' text-stone-200'
   }
 
+  // function to handle the search button click
+
   const handleClick = async ()=>{
     if(city.current.value===''){
       alert('Input cannot be empty');
       return;
     }
     try {
+      // helper function that geocodes the location name to coordinates
       setCoordinates(await getCoordinates(city.current.value));
       city.current.value = '';
     } catch (err) {
       console.log(err);
     }
   }
+
+  // functions handling the mode switch
 
   function degreeCelsiusClicked(){
     if(mode==='imperial'){
@@ -69,7 +78,7 @@ export default function Main(){
   },[])
 
   return (
-    <>
+    <CheckConnection>
         <div className="h-[90vh] w-[95vw] bg-teal-600 bg-opacity-95 flex flex-col rounded-lg max-md:mt-16 max-xl:overflow-scroll">
           {/* Input Div */}
           <div className="flex justify-evenly pt-[20px] max-md:fixed max-md:w-full">
@@ -91,9 +100,9 @@ export default function Main(){
           </div>}
           {coordinates.lat===null && <Loader />}
         </div>
-        <footer className="text-sky-500 mt-2 text-md">
+        <footer className="text-sky-500 mt-2 text-md text-center">
           Developed by <span className="text-stone-950 font-bold">Anurag Guleria</span>
         </footer>
-    </>
+    </CheckConnection>
   );
 }
