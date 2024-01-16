@@ -137,8 +137,8 @@ app.get('/geocode/:cityname',async(req,res)=>{
             lat : response.data[0].lat,
             lon : response.data[0].lon
         }
-        res.send(coordinates)
+        res.send(coordinates);
     } catch (error) {
         console.log(error);
-    }
+    } 
 })

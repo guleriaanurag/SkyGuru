@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {fetchData} from '../../assets/fuctions'
+import {fetchData} from '../../util/functions'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faLocationDot} from '@fortawesome/free-solid-svg-icons'

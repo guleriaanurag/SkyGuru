@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react';
-import {getColorForSO2,getColorForNO,getColorForPM10,getColorForPM2_5,getColorForO3,getColorForCO} from '../../assets/fuctions'
+import {getColorForSO2,getColorForNO,getColorForPM10,getColorForPM2_5,getColorForO3,getColorForCO} from '../../util/functions'
 
 export default function Pollutants({components}){
     

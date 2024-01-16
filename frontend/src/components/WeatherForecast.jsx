@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {fetchForecastData} from '../assets/fuctions'
+import {fetchForecastData} from '../util/functions'
 
 import HorizontalLine from "./HorizontalLine";
 import Span from "./Span";

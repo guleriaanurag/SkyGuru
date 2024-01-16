@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {fetchAirData} from '../../assets/fuctions'
+import {fetchAirData} from '../../util/functions'
 
 import Pollutants from "./Pollutants";
 import HorizontalLine from "../HorizontalLine";

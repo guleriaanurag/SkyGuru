@@ -1,7 +1,7 @@
 import { useState,useEffect,useRef } from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
-import { getCoordinates } from "../assets/fuctions";
+import { getCoordinates } from "../util/functions";
 
 import AirPollution from "./AirPollution/AirPollution";
 import CurrentWeather from "./CurrentWeather/CurrentWeather";
