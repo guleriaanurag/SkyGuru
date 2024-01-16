@@ -1,5 +1,7 @@
 # SkyGuru
 
+**View live demo [here](https://sky-guru.vercel.app)**
+
 **Guide to Start The Project**
 
 **Prerequisites:**
@@ -34,3 +36,7 @@ cd frontend
 npm install
 npm run dev
 ```
+
+## 📄 Todos
+
+Thank you ☺
