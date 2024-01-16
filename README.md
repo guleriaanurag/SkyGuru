@@ -38,7 +38,7 @@ npm run dev
 ```
 
 ## 📄 Todos
-- [x] Add Loading/Error States
+- [ ] Add Loading/Error States
 - [ ] Unit Testing
 - [ ] Dark/Light Mode
 - [ ] Convert the project to TypeScript
