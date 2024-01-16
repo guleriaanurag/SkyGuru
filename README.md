@@ -38,5 +38,9 @@ npm run dev
 ```
 
 ## 📄 Todos
+- [] Add Loading/Error States
+- [] Unit Testing
+- [] Dark/Light Mode
+- [] Convert the project to TypeScript
 
 Thank you ☺
