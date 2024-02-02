@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
-import {fetchAirData} from '../../util/functions'
-
 import Pollutants from "./Pollutants";
 import HorizontalLine from "../HorizontalLine";
+import useFetch from "../../hooks/useFetch";
 
 export default function AirPollution({coords}){
 
-    const[airPollutionData,setAirPollutionData] = useState({});
-    useEffect(()=>{
-        const{lat,lon} = coords;
-        const fetchPollutionData = async()=>{
-            await fetchAirData(lat,lon,setAirPollutionData);
-        }
-        fetchPollutionData();
-    },[coords])
+    const {
+        data:airPollutionData,
+        error
+    } = useFetch('airpollution/',coords,null,{});
 
     let aqi;
     if(airPollutionData.list){

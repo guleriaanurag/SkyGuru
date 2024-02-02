@@ -1,10 +1,13 @@
-import Main from "./components/Main";
+import MainWrapper from "./components/MainWrapper";
 import './App.css';
 import 'react-tooltip/dist/react-tooltip.css';
+import { LoadingContextProvider } from "./store/LoadingContext";
 
 function App() {
   return (
-      <Main />
+    <LoadingContextProvider>
+      <MainWrapper />
+    </LoadingContextProvider>
   )
 }
 

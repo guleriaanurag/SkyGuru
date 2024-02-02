@@ -1,6 +1,3 @@
-import { useEffect, useState } from 'react';
-import {fetchData} from '../../util/functions'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faLocationDot} from '@fortawesome/free-solid-svg-icons'
 
@@ -9,19 +6,22 @@ import Widget from './Widget';
 import WindDetails from './WindDetails';
 import SunDetails from './SunTime';
 import './CurrentWeather.css'
+import useFetch from '../../hooks/useFetch';
+import { useContext } from 'react';
+import LoadingContext from '../../store/LoadingContext';
 
 export default function CurrentWeather({coords,mode}){
 
-    const[weatherData,setWeatherData] = useState({});
+    const{
+        isLoading,
+        data:weatherData,
+        error
+    } = useFetch('weather/',coords,mode,{});
 
-    useEffect(()=>{
-        const{lat,lon} = coords;
-        const fetchAndUpdateData = async()=>{
-            await fetchData(lat,lon,mode,setWeatherData);
-        }
-        fetchAndUpdateData();
-    },[coords,mode])
+    const{changeLoading} = useContext(LoadingContext);
 
+    changeLoading(isLoading);
+    
     return(
         <>
         {weatherData.weather &&<div className="currentdata-wrapper h-[95%] w-[90%] mt-[30px] rounded-lg flex flex-col items-center max-md:w-[95%] max-md:mt-[80px]">
