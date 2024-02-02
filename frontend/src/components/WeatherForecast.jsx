@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";
-import {fetchForecastData} from '../util/functions'
-
 import HorizontalLine from "./HorizontalLine";
-import Span from "./Span";
+import useFetch from "../hooks/useFetch";
 
 export default function WeatherForecast({coords,mode}){
     
-    const[forecastData,setForecastData] = useState([]);
-    
-    useEffect(()=>{
-        const{lat,lon} = coords;
-        const fetchAndSetData = async()=>{
-            await fetchForecastData(lat,lon,mode,setForecastData);
-        }
-        fetchAndSetData();
-    },[coords,mode])
+    const{
+        data:forecastData,
+        error
+    } = useFetch('weather-forecast/',coords,mode,[]);
+
+    if(error){
+        return 
+    }
 
     return(
         <>  

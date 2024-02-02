@@ -1,4 +1,4 @@
-import { useState,useEffect,useRef } from "react";
+import { useState,useEffect,useRef, useContext } from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import { getCoordinates } from "../util/functions";
@@ -8,8 +8,9 @@ import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import WeatherForecast from "./WeatherForecast";
 import Loader from "./Loader";
 import CheckConnection from "./CheckConnection";
+import LoadingContext from "../store/LoadingContext";
 
-export default function Main(){
+export default function MainWrapper(){
   // state for handling the location coordinates
   const[coordinates,setCoordinates] = useState({
     lat: null,
@@ -19,6 +20,7 @@ export default function Main(){
   const[mode,setMode] = useState('metric');
   const city = useRef();
   
+  const {isLoading} = useContext(LoadingContext);
   // the code below is used to calculate the class for the mode switch buttons
   let cClass = "cursor-pointer";
   let fClass = "cursor-pointer";
@@ -88,6 +90,7 @@ export default function Main(){
             <input type="text" className="outline-none border-transparent w-[60%] pl-[20px] h-[40px] rounded-[30px]" placeholder="Enter City..." ref={city}/>
             <button onClick={handleClick} className="w-[43px] h-[40px] rounded-full bg-stone-50 hover:bg-stone-400 border-transparent max-md:mr-3"> <FontAwesomeIcon icon={faMagnifyingGlass}/> </button>
           </div>
+
           {/* Rest of the content */}
           {coordinates.lat!==null && <div className="weatherdata-wrapper flex flex-row max-md:flex-col h-full max-md:overflow-scroll">
             <div className="input-section pt-[10px] p-[20px] w-[40%] max-md:w-full max-md:h-full max-md:pr-[5px] max-md:pl-[10px]">
@@ -98,7 +101,30 @@ export default function Main(){
               {coordinates.lat && <WeatherForecast coords={coordinates} mode={mode}/>}
             </div>
           </div>}
-          {coordinates.lat===null && <Loader />}
+          
+          {/* Rendering a loader if the coordinates changed but the data is still loading */}
+
+          {isLoading && (
+            <Loader>
+              <p className="text-md font-light text-stone-100">
+                Please wait patiently while we fetch the data.
+              </p>
+            </Loader>
+          )}
+
+          {/* Rendering a loader if coordinates are null i.e. location not provided or city not searched */}
+          {coordinates.lat===null && (
+            <Loader>
+              <p className='text-md font-light text-stone-100'>
+                Welcome! We're waiting for your location to provide real-time weather data.
+                <span>Grant us access for a personalized weather experience!</span>
+              </p>
+              <p className='text-md font-light text-stone-200'>
+                Or, you can manually search for weather information of a specific location.
+              </p>
+            </Loader>
+          )}
+
         </div>
         <footer className="text-sky-500 mt-2 text-md text-center">
           Developed by <span className="text-stone-950 font-bold">Anurag Guleria</span>
