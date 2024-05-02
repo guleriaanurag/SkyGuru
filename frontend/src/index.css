@@ -8,7 +8,6 @@
     font-family: 'Libre Baskerville', serif;
 }
 
-/* #root{
-    background-size: cover;
-    background-repeat: no-repeat;
-} */
+.hide-scroll{
+    scrollbar-width: 0;
+}

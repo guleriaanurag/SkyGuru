@@ -37,7 +37,7 @@ export default function MainWrapper(){
   // function to handle the search button click
 
   const handleClick = async ()=>{
-    if(city.current.value===''){
+    if(city.current.value.trim()===''){
       alert('Input cannot be empty');
       return;
     }
@@ -46,7 +46,7 @@ export default function MainWrapper(){
       setCoordinates(await getCoordinates(city.current.value));
       city.current.value = '';
     } catch (err) {
-      console.log(err);
+      alert(err.message);
     }
   }
 
@@ -103,14 +103,6 @@ export default function MainWrapper(){
           </div>}
           
           {/* Rendering a loader if the coordinates changed but the data is still loading */}
-
-          {isLoading && (
-            <Loader>
-              <p className="text-md font-light text-stone-100">
-                Please wait patiently while we fetch the data.
-              </p>
-            </Loader>
-          )}
 
           {/* Rendering a loader if coordinates are null i.e. location not provided or city not searched */}
           {coordinates.lat===null && (

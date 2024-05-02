@@ -47,26 +47,13 @@ const CO_level =
 {range:[12400,15400],classToAdd:'text-orange-500'},
 {range:[15400,Infinity],classToAdd:'text-rose-600'}];
 
-// Functions to make axios request to the backend server
-
-// export async function fetchData(lat,lon,mode,setWeatherData){
-//     const response = await axios.get(BASE_URL+`weather/${lat}/${lon}/${mode}`);
-//     setWeatherData(response.data);
-// }
-
-// export async function fetchForecastData(lat,lon,mode,setForecastData){
-//     const response = await axios.get(BASE_URL+`weather-forecast/${lat}/${lon}/${mode}`);
-//     setForecastData(response.data)
-// }
-
-// export async function fetchAirData(lat,lon,setAirPollutionData){
-//     const response = await axios.get(BASE_URL+`airpollution/${lat}/${lon}`);
-//     setAirPollutionData(response.data)
-// } 
-
 export async function getCoordinates(cityName){
-    const response =  await axios.get(BASE_URL+`geocode/${cityName}`);
-    return response.data;
+        const response =  await axios.get(BASE_URL+`geocode/${cityName}`);
+        if(!response.data.lat || response.data.long){
+            throw new Error('Unknown Location');
+            return;
+        }
+        return response.data;
 }
 
 // functions to calculate classes to add to the polltants component
