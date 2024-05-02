@@ -140,6 +140,6 @@ app.get('/geocode/:cityname',async(req,res)=>{
         res.send(coordinates);
     } catch (error) {
         console.log(error);
-        res.status(error.respones.status).send(error);
+        res.send(error);
     } 
 })
