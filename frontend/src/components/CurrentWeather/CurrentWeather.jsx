@@ -1,49 +1,47 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faLocationDot} from '@fortawesome/free-solid-svg-icons'
 
+import './CurrentWeather.css'
 import DateTime from './DateTime';
 import Widget from './Widget';
 import WindDetails from './WindDetails';
 import SunDetails from './SunTime';
-import './CurrentWeather.css'
 import useFetch from '../../hooks/useFetch';
-import { useContext } from 'react';
-import LoadingContext from '../../store/LoadingContext';
+import CurrentWeatherSkeleton from '../../ui/CurrentWeatherSkeleton';
 
 export default function CurrentWeather({coords,mode}){
 
     const{
         isLoading,
         data:weatherData,
-        error
+        error,
     } = useFetch('weather/',coords,mode,{});
-
-    const{changeLoading} = useContext(LoadingContext);
-
-    changeLoading(isLoading);
     
     return(
         <>
-        {weatherData.weather &&<div className="currentdata-wrapper h-[95%] w-[90%] mt-[30px] rounded-lg flex flex-col items-center max-md:w-[95%] max-md:mt-[80px]">
-            {/* Basic Info */}
-            <div className='flex flex-row justify-between w-full px-4 pt-2 max-md:flex-col'>
-                <p className='text-md text-stone-900 max-md:text-center'>Current Weather</p>
-                <DateTime />
-            </div>
-            {/* Rest of the data */}
-            <div className='w-full'>
-                <div className='flex w-full justify-evenly mt-[40px]'>
-                    <div className='mt-4'>
-                        <p className='capitalize text-lg'> <FontAwesomeIcon icon={faLocationDot} className='text-xl'/> <span>{weatherData.name}, {weatherData.sys.country}</span></p>
-                        <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="Cloud" />
-                        <p className='ml-5 text-md'>{weatherData.weather[0].main}</p>
+        {isLoading ? (<CurrentWeatherSkeleton />) : (
+            <>
+                {weatherData.weather && 
+                <div className="currentweather-wrapper h-[95%] w-[90%] mt-[30px] rounded-lg flex flex-col items-center max-md:w-[95%] max-md:mt-[80px]">
+                    <div className='flex flex-row justify-between w-full px-4 pt-2 max-md:flex-col'>
+                        <p className='text-md text-stone-900 max-md:text-center'>Current Weather</p>
+                        <DateTime />
                     </div>
-                    <Widget data={weatherData}/>
-                </div>
-                <WindDetails windInfo={weatherData.wind} mode={mode}/>
-                <SunDetails sunData={weatherData.sys}/>
-            </div> 
-        </div>}
+                    <div className='w-full'>
+                        <div className='flex w-full justify-evenly mt-[40px]'>
+                            <div className='mt-4 w-[45%] flex flex-col items-center justify-center'>
+                                <p className='capitalize text-lg'> <FontAwesomeIcon icon={faLocationDot} className='text-xl'/> <span>{weatherData.name}, {weatherData.sys.country}</span></p>
+                                <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`} alt="Cloud" />
+                                <p className='text-md'>{weatherData.weather[0].main}</p>
+                            </div>
+                            <Widget data={weatherData}/>
+                        </div>
+                        <WindDetails windInfo={weatherData.wind} mode={mode}/>
+                        <SunDetails sunData={weatherData.sys}/>
+                    </div> 
+                </div>}
+            </>
+        )}
         </>
     );
 }

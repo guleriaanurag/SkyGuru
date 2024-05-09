@@ -51,7 +51,6 @@ export async function getCoordinates(cityName){
         const response =  await axios.get(BASE_URL+`geocode/${cityName}`);
         if(!response.data.lat || response.data.long){
             throw new Error('Unknown Location');
-            return;
         }
         return response.data;
 }

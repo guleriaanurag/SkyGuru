@@ -8,7 +8,6 @@ import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import WeatherForecast from "./WeatherForecast";
 import Loader from "./Loader";
 import CheckConnection from "./CheckConnection";
-import LoadingContext from "../store/LoadingContext";
 
 export default function MainWrapper(){
   // state for handling the location coordinates
@@ -19,8 +18,7 @@ export default function MainWrapper(){
   // state for managing the mode in which the data is fetched
   const[mode,setMode] = useState('metric');
   const city = useRef();
-  
-  const {isLoading} = useContext(LoadingContext);
+
   // the code below is used to calculate the class for the mode switch buttons
   let cClass = "cursor-pointer";
   let fClass = "cursor-pointer";
@@ -102,8 +100,6 @@ export default function MainWrapper(){
             </div>
           </div>}
           
-          {/* Rendering a loader if the coordinates changed but the data is still loading */}
-
           {/* Rendering a loader if coordinates are null i.e. location not provided or city not searched */}
           {coordinates.lat===null && (
             <Loader>
