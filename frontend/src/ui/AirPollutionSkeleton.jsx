@@ -2,8 +2,8 @@ export default function AirPollutionSkeleton(){
     return(
         <div className="flex flex-col items-center mt-6 h-[40%] w-[100%] max-md:mt-10 max-md:h-[15%]">
             <div className="flex w-full justify-between px-4 max-md:gap-1 max-md:flex-col">
-                <h2 className="h-5 w-[30%] bg-stone-300 bg-opacity-35 text-md animate-pulse max-md:mx-auto max-md:w-[40%]"></h2>
-                <p className="h-5 w-[30%] bg-stone-300 bg-opacity-35 animate-pulse max-md:mx-auto max-md:w-[70%]"></p>
+                <h2 className="h-5 w-[30%] bg-stone-300 bg-opacity-35 text-md animate-pulse max-md:mx-auto max-md:w-[40%] rounded-md"></h2>
+                <p className="h-5 w-[30%] bg-stone-300 bg-opacity-35 animate-pulse max-md:mx-auto max-md:w-[70%] rounded-md"></p>
             </div>
             <h3 className="text-stone-100 mt-10 max-md:mt-10">Pollutants: Values in (μg/m3)</h3>
             <div className="grid grid-cols-6 w-[90%] mt-8 ml-8 p-4 bg-black bg-opacity-75 text-center rounded-lg max-md:w-full max-md:ml-5 max-md:mt-2">
