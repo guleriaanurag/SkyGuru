@@ -10,12 +10,12 @@ export default function Widget({data}) {
         <Tooltip id='widget-tooltip'/>
         <p className='text-md text-stone-100'>Feels like : <span className='text-md text-stone-200'>{data.main.feels_like}&deg;</span></p>
         <div className='flex w-full justify-start gap-4'>
-            <p> <FontAwesomeIcon icon={faUpLong} className='text-xl text-sky-900'/> <Span>{data.main.temp_max}&deg;</Span></p>
-            <p> <FontAwesomeIcon icon={faDownLong} className='text-xl text-sky-900'/> <Span>{data.main.temp_min}&deg;</Span></p>
+            <p> <FontAwesomeIcon icon={faUpLong} className='text-xl text-sky-900 dark:text-sky-400'/> <Span>{data.main.temp_max}&deg;</Span></p>
+            <p> <FontAwesomeIcon icon={faDownLong} className='text-xl text-sky-900 dark:text-sky-400'/> <Span>{data.main.temp_min}&deg;</Span></p>
         </div>
-        <p  data-tooltip-id='widget-tooltip' data-tooltip-content='Temperature'> <FontAwesomeIcon icon={faThermometerThreeQuarters} className='text-xl text-sky-900 mr-2'/> <Span>{data.main.temp}&deg;</Span></p>
-        <p data-tooltip-id='widget-tooltip' data-tooltip-content='Humidity'> <FontAwesomeIcon icon={faDroplet} className='text-xl text-sky-900 mr-2'/> <Span>{data.main.humidity} %</Span></p>
-        <p data-tooltip-id='widget-tooltip' data-tooltip-content='Pressure'> <FontAwesomeIcon icon={faCompactDisc} className='text-lg text-sky-900 mr-2'/><Span>{data.main.pressure}pHa</Span> </p>
+        <p  data-tooltip-id='widget-tooltip' data-tooltip-content='Temperature'> <FontAwesomeIcon icon={faThermometerThreeQuarters} className='text-xl text-sky-900 dark:text-sky-400 mr-2'/> <Span>{data.main.temp}&deg;</Span></p>
+        <p data-tooltip-id='widget-tooltip' data-tooltip-content='Humidity'> <FontAwesomeIcon icon={faDroplet} className='text-xl text-sky-900 dark:text-sky-400 mr-2'/> <Span>{data.main.humidity} %</Span></p>
+        <p data-tooltip-id='widget-tooltip' data-tooltip-content='Pressure'> <FontAwesomeIcon icon={faCompactDisc} className='text-lg text-sky-900 dark:text-sky-400 mr-2'/><Span>{data.main.pressure}pHa</Span> </p>
     </div>
   )
 }
