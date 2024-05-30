@@ -9,7 +9,7 @@ export default function CurrentWeatherSkeleton(){
     return(
         <div className="h-[95%] w-[90%] mt-[30px] rounded-lg flex flex-col items-center max-md:w-[95%] max-md:mt-[80px]">
                 <div className='flex flex-row justify-between w-full px-4 pt-2 max-md:flex-col'>
-                    <p className='text-md text-stone-900 max-md:text-center'>Current Weather</p>
+                    <p className='text-md text-stone-900 dark:text-sky-100 max-md:text-center'>Current Weather</p>
                     <DateTime />
                 </div>
                 <div className='w-full'>
@@ -30,24 +30,24 @@ export default function CurrentWeatherSkeleton(){
                             </div>
                             <div className='flex justify-start gap-4 w-full'>
                                 <div className="flex gap-2">
-                                    <p> <FontAwesomeIcon icon={faUpLong} className='text-xl text-sky-900'/></p>
+                                    <p> <FontAwesomeIcon icon={faUpLong} className='text-xl text-sky-900 dark:text-sky-400'/></p>
                                     <p className="bg-stone-300 bg-opacity-35 animate-pulse h-6 w-16 rounded-md"></p>
                                 </div>
                                 <div className="flex gap-2">
-                                    <p> <FontAwesomeIcon icon={faDownLong} className='text-xl text-sky-900'/></p>
+                                    <p> <FontAwesomeIcon icon={faDownLong} className='text-xl text-sky-900 dark:text-sky-400'/></p>
                                     <p className="bg-stone-300 bg-opacity-35 animate-pulse h-6 w-16 rounded-md"></p>
                                 </div>
                             </div>
                             <div className="flex gap-2">
-                                <p> <FontAwesomeIcon icon={faThermometerThreeQuarters} className='text-xl text-sky-900'/></p>
+                                <p> <FontAwesomeIcon icon={faThermometerThreeQuarters} className='text-xl text-sky-900 dark:text-sky-400'/></p>
                                 <p className="bg-stone-300 bg-opacity-35 animate-pulse h-6 w-16 rounded-md"></p>
                             </div>
                             <div className="flex gap-2">
-                                <p> <FontAwesomeIcon icon={faDroplet} className='text-xl text-sky-900'/> </p>
+                                <p> <FontAwesomeIcon icon={faDroplet} className='text-xl text-sky-900 dark:text-sky-400'/> </p>
                                 <p className="bg-stone-300 bg-opacity-35 animate-pulse h-6 w-16 rounded-md"></p>
                             </div>
                             <div className="flex gap-2">
-                                <p> <FontAwesomeIcon icon={faCompactDisc} className='text-lg text-sky-900'/></p>
+                                <p> <FontAwesomeIcon icon={faCompactDisc} className='text-lg text-sky-900 dark:text-sky-400'/></p>
                                 <p className="bg-stone-300 bg-opacity-35 animate-pulse h-6 w-16 rounded-md"></p>
                             </div>
                         </div>

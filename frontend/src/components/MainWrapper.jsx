@@ -26,12 +26,12 @@ export default function MainWrapper(){
   let fClass = "cursor-pointer";
 
   if(mode==='metric'){
-    cClass+=' text-stone-200';
-    fClass+=' hover:text-stone-200';
+    cClass+=' text-stone-100 dark:underline';
+    fClass+=' dark:text-stone-200 hover:text-stone-200';
   }
   else{
-    cClass+=' hover:text-stone-200';
-    fClass+=' text-stone-200'
+    cClass+=' dark:text-stone-200 hover:text-stone-200';
+    fClass+=' text-stone-100 dark:underline'
   }
 
   // function to handle the search button click
@@ -106,7 +106,7 @@ export default function MainWrapper(){
               <p className="text-lg mt-2"><span className={cClass} onClick={degreeCelsiusClicked}>&deg;C</span> | <span className={fClass} onClick={degreeFarenheitClicked}>&deg;F</span></p>
             </div>}
             <input type="text" className="outline-none border-transparent w-[60%] pl-[20px] h-[40px] rounded-[30px]" placeholder="Enter City..." ref={city}/>
-            <div className="flex gap-4">
+            <div className="flex gap-4 max-md:flex-col max-md:gap-2">
               <button onClick={handleClick} className="w-[43px] h-[40px] rounded-full transition-colors duration-300 bg-stone-50 hover:bg-stone-400 border-transparent max-md:mr-3"> <FontAwesomeIcon icon={faMagnifyingGlass}/> </button>
               <button
                 onClick={toggleTheme}
